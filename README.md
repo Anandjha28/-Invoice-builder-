@@ -38,12 +38,4 @@ A modern, user-friendly web application for creating business invoices with auto
 
 Tested on latest versions of Chrome, Firefox, Edge, and Safari.
 
-## License
 
-This project is open source and free to use under the MIT License.
-
----
-
-Created for small business owners, freelancers, and teams to easily generate simple invoices without complicated software.
-
-Feel free to customize or expand the project to suit your needs!
