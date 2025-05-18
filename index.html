@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Invoice Builder with Tax & Discount</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <div class="container" role="main" aria-label="Invoice Builder Application">
+    <h1>Invoice Builder</h1>
+    <form id="invoice-form" aria-describedby="form-description">
+      <div id="form-description" class="sr-only">
+        Enter invoice details including client name, invoice date, items with quantity and price, tax percentage, and discount percentage.
+        Use buttons to add items, calculate totals, and export preview text.
+      </div>
+      <label for="client-name">Client Name / Company</label>
+      <input type="text" id="client-name" name="clientName" placeholder="Enter client name or company" required aria-required="true" autocomplete="off" />
+
+      <label for="invoice-date">Invoice Date</label>
+      <input type="date" id="invoice-date" name="invoiceDate" required aria-required="true" />
+
+      <table class="items-table" aria-label="Invoice Items">
+        <thead>
+          <tr>
+            <th scope="col">Description</th>
+            <th scope="col" style="width:80px;">Qty</th>
+            <th scope="col" style="width:120px;">Price (₹)</th>
+            <th scope="col" style="width:120px;">Total (₹)</th>
+            <th scope="col" style="width:40px;" aria-label="Delete Item"></th>
+          </tr>
+        </thead>
+        <tbody id="items-body">
+          <!-- Items rows go here -->
+        </tbody>
+      </table>
+
+      <button type="button" class="add-item-btn" id="add-item-btn" aria-label="Add new item row">+ Add Item</button>
+
+      <label for="tax-percent">Tax (%)</label>
+      <input type="number" id="tax-percent" name="taxPercent" value="0" min="0" max="100" step="0.01" aria-describedby="tax-desc" />
+      <div id="tax-desc" class="sr-only">Enter tax percentage to apply on subtotal.</div>
+
+      <label for="discount-percent">Discount (%)</label>
+      <input type="number" id="discount-percent" name="discountPercent" value="0" min="0" max="100" step="0.01" aria-describedby="discount-desc" />
+      <div id="discount-desc" class="sr-only">Enter discount percentage to reduce from subtotal.</div>
+
+      <div class="summary" aria-live="polite" aria-atomic="true" aria-relevant="additions removals">
+        <div><span>Subtotal:</span> <span id="subtotal-amount">₹0.00</span></div>
+        <div><span>Tax:</span> <span id="tax-amount">₹0.00</span></div>
+        <div><span>Discount:</span> <span id="discount-amount">₹0.00</span></div>
+        <div><span>Total:</span> <span id="total-amount">₹0.00</span></div>
+      </div>
+
+      <div class="button-group">
+        <button type="button" id="calculate-btn" aria-label="Calculate invoice totals">Calculate</button>
+        <button type="button" id="export-btn" aria-label="Export invoice preview text">Export Preview</button>
+        <button type="reset" id="reset-btn" aria-label="Reset form and invoice">Reset</button>
+      </div>
+    </form>
+
+    <pre class="export-preview" id="export-preview" aria-label="Invoice export preview" tabindex="0"></pre>
+  </div>
+
+  <script src="index.js"></script>
+    
+</body>
+</html>
+
